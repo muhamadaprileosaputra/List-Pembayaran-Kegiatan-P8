@@ -64,7 +64,6 @@
       pointer-events: none;
     }
 
-    /* Desktop table row hover */
     @media (min-width: 640px) {
       .row-hover:hover {
         background: #F5F6FA;
@@ -73,10 +72,7 @@
     }
     .row-hover { transition: all 0.25s ease; }
 
-    /* Mobile card hover */
-    .student-card {
-      transition: all 0.25s ease;
-    }
+    .student-card { transition: all 0.25s ease; }
     .student-card:active {
       background: #F5F6FA;
       transform: scale(0.98);
@@ -101,10 +97,22 @@
       border: 1px solid #A7F3D0;
     }
 
+    .badge-unpaid {
+      background: #FEF2F2;
+      color: #DC2626;
+      border: 1px solid #FECACA;
+    }
+
     .badge-info {
       background: #EEF2FF;
       color: #4F46E5;
       border: 1px solid #C7D2FE;
+    }
+
+    .badge-warn {
+      background: #FFFBEB;
+      color: #D97706;
+      border: 1px solid #FDE68A;
     }
 
     .search-input {
@@ -128,7 +136,7 @@
       position: absolute;
       inset: -2px;
       border-radius: 50%;
-      border: 2px solid #10B981;
+      border: 2px solid #F59E0B;
       animation: pulse-ring 2s ease-out infinite;
     }
 
@@ -149,18 +157,48 @@
       border: 1px solid #E0E7FF;
     }
 
+    .avatar-unpaid {
+      background: #FEF2F2;
+      color: #DC2626;
+      border: 1px solid #FECACA;
+    }
+
     .footer-bg {
       background: #FFFFFF;
       border-top: 1px solid #E8EAF0;
     }
 
-    /* Hide desktop table on mobile, show cards */
     .desktop-table { display: none; }
     .mobile-cards { display: block; }
 
     @media (min-width: 640px) {
       .desktop-table { display: block; }
       .mobile-cards { display: none; }
+    }
+
+    .filter-btn {
+      transition: all 0.25s ease;
+    }
+    .filter-btn.active-filter {
+      background: #4F46E5;
+      color: white;
+      border-color: #4F46E5;
+    }
+    .filter-btn:not(.active-filter):hover {
+      background: #F5F6FA;
+      border-color: #D1D5DB;
+    }
+
+    .row-unpaid {
+      background: #FFFBFB;
+    }
+    .row-unpaid:hover {
+      background: #FEF2F2 !important;
+    }
+
+    .card-unpaid {
+      background: #FFFBFB;
+      border-color: #FECACA;
     }
   </style>
 </head>
@@ -180,7 +218,7 @@
           <span class="text-[10px] sm:text-xs text-gray-400 hidden sm:inline">Kelas VIII.A</span>
         </div>
       </div>
-      <span class="badge-info text-[9px] sm:text-[10px] font-semibold tracking-wide uppercase px-2.5 sm:px-3 py-1 rounded-full whitespace-nowrap">P8 Active</span>
+      <span class="badge-warn text-[9px] sm:text-[10px] font-semibold tracking-wide uppercase px-2.5 sm:px-3 py-1 rounded-full whitespace-nowrap">3 Belum Lunas</span>
     </div>
   </nav>
 
@@ -191,34 +229,34 @@
       <!-- Header -->
       <div class="text-center mb-10 sm:mb-14 reveal">
         <div class="inline-flex items-center gap-2 mb-5 sm:mb-6 px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full bg-white border border-gray-200 shadow-sm">
-          <span class="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-emerald-500 pulse-ring"></span>
+          <span class="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-amber-500 pulse-ring"></span>
           <span class="text-[10px] sm:text-xs text-gray-500 font-medium">Kegiatan P8 — TA 2025/2026</span>
         </div>
         <h1 class="text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight gradient-title leading-tight mb-3 sm:mb-4">
           Nonton Film Edukasi
         </h1>
         <p class="text-sm sm:text-base md:text-lg text-gray-500 max-w-xl mx-auto leading-relaxed px-2">
-          Tema: <span class="font-semibold text-gray-700">Cyber Bullying</span> — Daftar siswa yang telah menyelesaikan pembayaran
+          Tema: <span class="font-semibold text-gray-700">Cyber Bullying</span> — Daftar pembayaran 23 siswa
         </p>
       </div>
 
       <!-- Stats -->
       <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-8 sm:mb-10">
         <div class="stat-card card rounded-xl sm:rounded-2xl p-3.5 sm:p-5 text-center reveal delay-100">
-          <div class="text-2xl sm:text-3xl font-bold text-gray-900 mb-0.5 sm:mb-1">20</div>
+          <div class="text-2xl sm:text-3xl font-bold text-emerald-600 mb-0.5 sm:mb-1">20</div>
           <div class="text-[9px] sm:text-[11px] text-gray-400 font-semibold tracking-wider uppercase">Sudah Bayar</div>
         </div>
         <div class="stat-card card rounded-xl sm:rounded-2xl p-3.5 sm:p-5 text-center reveal delay-200">
-          <div class="text-2xl sm:text-3xl font-bold text-indigo-600 mb-0.5 sm:mb-1">100K</div>
-          <div class="text-[9px] sm:text-[11px] text-gray-400 font-semibold tracking-wider uppercase">Per Siswa</div>
+          <div class="text-2xl sm:text-3xl font-bold text-red-500 mb-0.5 sm:mb-1">3</div>
+          <div class="text-[9px] sm:text-[11px] text-gray-400 font-semibold tracking-wider uppercase">Belum Bayar</div>
         </div>
         <div class="stat-card card rounded-xl sm:rounded-2xl p-3.5 sm:p-5 text-center reveal delay-300">
-          <div class="text-xl sm:text-2xl md:text-3xl font-bold text-emerald-600 mb-0.5 sm:mb-1">Rp 2 Juta</div>
-          <div class="text-[9px] sm:text-[11px] text-gray-400 font-semibold tracking-wider uppercase">Total Terkumpul</div>
+          <div class="text-xl sm:text-2xl md:text-3xl font-bold text-indigo-600 mb-0.5 sm:mb-1">Rp 2 Juta</div>
+          <div class="text-[9px] sm:text-[11px] text-gray-400 font-semibold tracking-wider uppercase">Terkumpul</div>
         </div>
         <div class="stat-card card rounded-xl sm:rounded-2xl p-3.5 sm:p-5 text-center reveal delay-400">
-          <div class="text-2xl sm:text-3xl font-bold text-purple-600 mb-0.5 sm:mb-1">100%</div>
-          <div class="text-[9px] sm:text-[11px] text-gray-400 font-semibold tracking-wider uppercase">Lunasi</div>
+          <div class="text-2xl sm:text-3xl font-bold text-purple-600 mb-0.5 sm:mb-1">87%</div>
+          <div class="text-[9px] sm:text-[11px] text-gray-400 font-semibold tracking-wider uppercase">Progress</div>
         </div>
       </div>
 
@@ -226,12 +264,15 @@
       <div class="card rounded-xl sm:rounded-2xl p-4 sm:p-6 mb-8 sm:mb-10 reveal delay-200">
         <div class="flex items-center justify-between mb-2.5 sm:mb-3">
           <span class="text-xs sm:text-sm text-gray-500 font-medium">Progress Pembayaran</span>
-          <span class="text-xs sm:text-sm text-emerald-600 font-bold">20 / 20 Siswa</span>
+          <span class="text-xs sm:text-sm text-gray-700 font-bold">20 / 23 Siswa</span>
         </div>
         <div class="w-full h-2.5 sm:h-3 rounded-full bg-gray-100">
           <div class="progress-bar h-full rounded-full" id="progress-bar" style="width: 0%;"></div>
         </div>
-        <p class="text-[10px] sm:text-xs text-gray-400 mt-2.5 sm:mt-3 text-center">🎉 Semua siswa telah menyelesaikan pembayaran</p>
+        <div class="flex flex-col sm:flex-row items-center justify-between mt-2.5 sm:mt-3 gap-1.5 sm:gap-0">
+          <p class="text-[10px] sm:text-xs text-gray-400">Masih tersisa <span class="font-semibold text-red-500">Rp 300.000</span> dari <span class="font-semibold text-gray-600">Rp 2.300.000</span></p>
+          <p class="text-[10px] sm:text-xs text-amber-600 font-medium">⚠️ 3 siswa belum menyelesaikan pembayaran</p>
+        </div>
       </div>
 
       <!-- Info Cards -->
@@ -293,30 +334,37 @@
               <span class="iconify text-gray-300 text-sm mt-0.5 shrink-0" data-icon="mdi:bookmark-outline"></span>
               <div>
                 <span class="text-[10px] sm:text-[11px] text-gray-400 font-medium">Kelas</span>
-                <p class="text-xs sm:text-sm text-gray-700 font-medium">VIII.A</p>
+                <p class="text-xs sm:text-sm text-gray-700 font-medium">VIII.A — 23 Siswa</p>
               </div>
             </div>
             <div class="flex items-start gap-3">
               <span class="iconify text-gray-300 text-sm mt-0.5 shrink-0" data-icon="mdi:calendar-outline"></span>
               <div>
                 <span class="text-[10px] sm:text-[11px] text-gray-400 font-medium">Tahun Ajaran</span>
-                <p class="text-xs sm:text-sm text-gray-700 font-medium">2024 / 2025</p>
+                <p class="text-xs sm:text-sm text-gray-700 font-medium">2025 / 2026</p>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Search -->
+      <!-- Search + Filter -->
       <div class="mb-4 reveal delay-200">
-        <div class="relative">
-          <span class="iconify absolute left-3.5 sm:left-4 top-1/2 -translate-y-1/2 text-gray-400 text-base sm:text-lg" data-icon="mdi:magnify"></span>
-          <input type="text" id="search-input" placeholder="Cari nama siswa..."
-            class="search-input w-full pl-10 sm:pl-11 pr-4 py-3 sm:py-3.5 rounded-xl text-sm text-gray-900 placeholder-gray-400">
+        <div class="flex flex-col sm:flex-row gap-2.5 sm:gap-3">
+          <div class="relative flex-1">
+            <span class="iconify absolute left-3.5 sm:left-4 top-1/2 -translate-y-1/2 text-gray-400 text-base sm:text-lg" data-icon="mdi:magnify"></span>
+            <input type="text" id="search-input" placeholder="Cari nama siswa..."
+              class="search-input w-full pl-10 sm:pl-11 pr-4 py-3 sm:py-3.5 rounded-xl text-sm text-gray-900 placeholder-gray-400">
+          </div>
+          <div class="flex gap-2">
+            <button class="filter-btn active-filter text-[11px] sm:text-xs font-semibold px-3.5 sm:px-4 py-2.5 sm:py-3 rounded-xl border border-gray-200 whitespace-nowrap" data-filter="semua">Semua</button>
+            <button class="filter-btn text-[11px] sm:text-xs font-semibold px-3.5 sm:px-4 py-2.5 sm:py-3 rounded-xl border border-gray-200 text-gray-500 bg-white whitespace-nowrap" data-filter="lunas">Lunas</button>
+            <button class="filter-btn text-[11px] sm:text-xs font-semibold px-3.5 sm:px-4 py-2.5 sm:py-3 rounded-xl border border-gray-200 text-gray-500 bg-white whitespace-nowrap" data-filter="belum">Belum</button>
+          </div>
         </div>
       </div>
 
-      <!-- ===== DESKTOP TABLE (hidden on mobile) ===== -->
+      <!-- ===== DESKTOP TABLE ===== -->
       <div class="desktop-table card rounded-2xl overflow-hidden reveal delay-300">
         <div class="grid grid-cols-12 gap-4 px-6 py-3.5 bg-gray-50 border-b border-gray-100">
           <div class="col-span-1 text-[11px] text-gray-400 font-bold tracking-wider uppercase">No</div>
@@ -331,7 +379,7 @@
         </div>
       </div>
 
-      <!-- ===== MOBILE CARDS (hidden on desktop) ===== -->
+      <!-- ===== MOBILE CARDS ===== -->
       <div class="mobile-cards reveal delay-300">
         <div id="mobile-list" class="space-y-2.5"></div>
         <div id="mobile-empty" class="hidden card rounded-xl py-12 text-center">
@@ -342,9 +390,9 @@
 
       <!-- Footer Note -->
       <div class="mt-8 text-center reveal delay-400">
-        <div class="inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-white border border-gray-200 shadow-sm">
-          <span class="iconify text-emerald-500 text-sm" data-icon="mdi:check-circle"></span>
-          <span class="text-[10px] sm:text-xs text-gray-500 font-medium">Semua pembayaran telah diterima dengan lengkap</span>
+        <div class="inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-white border border-amber-200 shadow-sm">
+          <span class="iconify text-amber-500 text-sm" data-icon="mdi:alert-circle"></span>
+          <span class="text-[10px] sm:text-xs text-gray-500 font-medium">3 siswa belum menyelesaikan pembayaran</span>
         </div>
       </div>
 
@@ -361,13 +409,29 @@
 
   <script>
     const students = [
-      { no: 1, name: "Dinda" }, { no: 2, name: "Hasya" }, { no: 3, name: "Karisna" },
-      { no: 4, name: "Leo" }, { no: 5, name: "Rafka" }, { no: 6, name: "Shintya" },
-      { no: 7, name: "Mutiara" }, { no: 8, name: "Refki" }, { no: 9, name: "Viki" },
-      { no: 10, name: "Ramadhan" }, { no: 11, name: "Ripan" }, { no: 12, name: "Reno" },
-      { no: 13, name: "Varen" }, { no: 14, name: "Alvito" }, { no: 15, name: "Aulia" },
-      { no: 16, name: "Sisi" }, { no: 17, name: "Derlan" }, { no: 18, name: "Alifa" },
-      { no: 19, name: "Fitri" }, { no: 20, name: "Syawal" },
+      { no: 1, name: "Dinda", paid: true },
+      { no: 2, name: "Hasya", paid: true },
+      { no: 3, name: "Karisna", paid: true },
+      { no: 4, name: "Leo", paid: true },
+      { no: 5, name: "Rafka", paid: true },
+      { no: 6, name: "Shintya", paid: true },
+      { no: 7, name: "Mutiara", paid: true },
+      { no: 8, name: "Refki", paid: true },
+      { no: 9, name: "Viki", paid: true },
+      { no: 10, name: "Ramadhan", paid: true },
+      { no: 11, name: "Ripan", paid: true },
+      { no: 12, name: "Reno", paid: true },
+      { no: 13, name: "Varen", paid: true },
+      { no: 14, name: "Alvito", paid: true },
+      { no: 15, name: "Aulia", paid: true },
+      { no: 16, name: "Sisi", paid: true },
+      { no: 17, name: "Derlan", paid: true },
+      { no: 18, name: "Alifa", paid: true },
+      { no: 19, name: "Fitri", paid: true },
+      { no: 20, name: "Syawal", paid: true },
+      { no: 21, name: "Puspita", paid: false },
+      { no: 22, name: "Steven", paid: false },
+      { no: 23, name: "Cahaya", paid: false },
     ];
 
     const desktopList = document.getElementById('desktop-list');
@@ -375,63 +439,84 @@
     const desktopEmpty = document.getElementById('desktop-empty');
     const mobileEmpty = document.getElementById('mobile-empty');
     const searchInput = document.getElementById('search-input');
+    const filterBtns = document.querySelectorAll('.filter-btn');
+
+    let currentFilter = 'semua';
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active-filter'));
+        btn.classList.add('active-filter');
+        currentFilter = btn.dataset.filter;
+        render(searchInput.value);
+      });
+    });
 
     function render(filter = '') {
       const f = filter.toLowerCase();
-      const filtered = students.filter(s => s.name.toLowerCase().includes(f));
+      let filtered = students.filter(s => s.name.toLowerCase().includes(f));
 
-      // Desktop table
+      if (currentFilter === 'lunas') filtered = filtered.filter(s => s.paid);
+      if (currentFilter === 'belum') filtered = filtered.filter(s => !s.paid);
+
+      // Desktop
       if (filtered.length === 0) {
         desktopList.innerHTML = '';
         desktopEmpty.classList.remove('hidden');
       } else {
         desktopEmpty.classList.add('hidden');
-        desktopList.innerHTML = filtered.map((s, i) => `
-          <div class="grid grid-cols-12 gap-4 px-6 py-3 row-hover items-center border-b border-gray-50"
-               style="animation: countUp 0.3s ease ${i * 25}ms both;">
-            <div class="col-span-1 text-sm text-gray-400 font-medium">${String(s.no).padStart(2, '0')}</div>
-            <div class="col-span-5 flex items-center gap-3">
-              <div class="avatar-init w-8 h-8 rounded-lg flex items-center justify-center text-xs font-bold shrink-0">
-                ${s.name.charAt(0).toUpperCase()}
+        desktopList.innerHTML = filtered.map((s, i) => {
+          const unpaidClass = !s.paid ? 'row-unpaid' : '';
+          const avatarClass = !s.paid ? 'avatar-unpaid' : 'avatar-init';
+          const statusBadge = s.paid
+            ? `<span class="badge-paid text-[10px] font-bold tracking-wide uppercase px-3 py-1 rounded-full inline-flex items-center gap-1"><span class="iconify text-[10px]" data-icon="mdi:check"></span>Lunas</span>`
+            : `<span class="badge-unpaid text-[10px] font-bold tracking-wide uppercase px-3 py-1 rounded-full inline-flex items-center gap-1"><span class="iconify text-[10px]" data-icon="mdi:close"></span>Belum</span>`;
+          return `
+            <div class="grid grid-cols-12 gap-4 px-6 py-3 row-hover items-center border-b border-gray-50 ${unpaidClass}"
+                 style="animation: countUp 0.3s ease ${i * 25}ms both;">
+              <div class="col-span-1 text-sm text-gray-400 font-medium">${String(s.no).padStart(2, '0')}</div>
+              <div class="col-span-5 flex items-center gap-3">
+                <div class="${avatarClass} w-8 h-8 rounded-lg flex items-center justify-center text-xs font-bold shrink-0">
+                  ${s.name.charAt(0).toUpperCase()}
+                </div>
+                <span class="text-sm ${s.paid ? 'text-gray-800' : 'text-red-600'} font-medium truncate">${s.name}</span>
               </div>
-              <span class="text-sm text-gray-800 font-medium truncate">${s.name}</span>
-            </div>
-            <div class="col-span-4 text-right">
-              <span class="text-sm text-gray-500">Rp 100.000</span>
-            </div>
-            <div class="col-span-2 text-center">
-              <span class="badge-paid text-[10px] font-bold tracking-wide uppercase px-3 py-1 rounded-full inline-flex items-center gap-1">
-                <span class="iconify text-[10px]" data-icon="mdi:check"></span>Lunas
-              </span>
-            </div>
-          </div>
-        `).join('');
+              <div class="col-span-4 text-right">
+                <span class="text-sm ${s.paid ? 'text-gray-500' : 'text-red-400'}">${s.paid ? 'Rp 100.000' : 'Rp 100.000'}</span>
+              </div>
+              <div class="col-span-2 text-center">${statusBadge}</div>
+            </div>`;
+        }).join('');
       }
 
-      // Mobile cards
+      // Mobile
       if (filtered.length === 0) {
         mobileList.innerHTML = '';
         mobileEmpty.classList.remove('hidden');
       } else {
         mobileEmpty.classList.add('hidden');
-        mobileList.innerHTML = filtered.map((s, i) => `
-          <div class="student-card card rounded-xl p-3.5 flex items-center gap-3"
-               style="animation: countUp 0.3s ease ${i * 25}ms both;">
-            <div class="avatar-init w-10 h-10 rounded-xl flex items-center justify-center text-sm font-bold shrink-0">
-              ${s.name.charAt(0).toUpperCase()}
-            </div>
-            <div class="flex-1 min-w-0">
-              <div class="flex items-center gap-2 mb-0.5">
-                <span class="text-[10px] text-gray-400 font-medium">${String(s.no).padStart(2, '0')}</span>
-                <span class="text-sm text-gray-800 font-semibold truncate">${s.name}</span>
+        mobileList.innerHTML = filtered.map((s, i) => {
+          const cardClass = !s.paid ? 'card-unpaid' : '';
+          const avatarClass = !s.paid ? 'avatar-unpaid' : 'avatar-init';
+          const statusBadge = s.paid
+            ? `<span class="badge-paid text-[9px] font-bold tracking-wide uppercase px-2.5 py-1 rounded-full inline-flex items-center gap-0.5 shrink-0"><span class="iconify text-[9px]" data-icon="mdi:check"></span>Lunas</span>`
+            : `<span class="badge-unpaid text-[9px] font-bold tracking-wide uppercase px-2.5 py-1 rounded-full inline-flex items-center gap-0.5 shrink-0"><span class="iconify text-[9px]" data-icon="mdi:close"></span>Belum</span>`;
+          return `
+            <div class="student-card card ${cardClass} rounded-xl p-3.5 flex items-center gap-3"
+                 style="animation: countUp 0.3s ease ${i * 25}ms both;">
+              <div class="${avatarClass} w-10 h-10 rounded-xl flex items-center justify-center text-sm font-bold shrink-0">
+                ${s.name.charAt(0).toUpperCase()}
               </div>
-              <span class="text-xs text-gray-400">Rp 100.000</span>
-            </div>
-            <span class="badge-paid text-[9px] font-bold tracking-wide uppercase px-2.5 py-1 rounded-full inline-flex items-center gap-0.5 shrink-0">
-              <span class="iconify text-[9px]" data-icon="mdi:check"></span>Lunas
-            </span>
-          </div>
-        `).join('');
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-2 mb-0.5">
+                  <span class="text-[10px] text-gray-400 font-medium">${String(s.no).padStart(2, '0')}</span>
+                  <span class="text-sm ${s.paid ? 'text-gray-800' : 'text-red-600'} font-semibold truncate">${s.name}</span>
+                </div>
+                <span class="text-xs ${s.paid ? 'text-gray-400' : 'text-red-400'}">Rp 100.000</span>
+              </div>
+              ${statusBadge}
+            </div>`;
+        }).join('');
       }
     }
 
@@ -446,9 +531,9 @@
     }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    // Progress bar
+    // Progress bar — 87%
     setTimeout(() => {
-      document.getElementById('progress-bar').style.width = '100%';
+      document.getElementById('progress-bar').style.width = '87%';
     }, 500);
   </script>
 
